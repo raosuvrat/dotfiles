@@ -1,0 +1,19 @@
+# XDG_CONFIG_HOME/bash/bashrc.d/functions
+
+mpw () {
+    case "$1" in
+        cb)
+            (mpv "$(xsel -bo)" "${@:2}" &>/dev/null & disown)
+            ;;
+        pb)
+            (mpv "$(xsel -po)" "${@:2}" &>/dev/null & disown)
+            ;;
+        *)
+            (mpv "$@" &>/dev/null & disown)
+            ;;
+    esac
+}
+
+pb () {
+    curl -F "c=@${1:--}" https://ptpb.pw/
+}
